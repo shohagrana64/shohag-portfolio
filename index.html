@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shohag Rana — DevSecOps & Cloud Engineer</title>
+<meta name="description" content="Shohag Rana — Cybersecurity, DevSecOps, Cloud & DevOps engineer based in Sydney. CI/CD, AWS, Kubernetes, observability and security at scale.">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<!-- background fx -->
+<div class="bg-fx" aria-hidden="true">
+  <div class="orb a"></div>
+  <div class="orb b"></div>
+  <div class="grid"></div>
+  <div class="scan"></div>
+</div>
+
+<!-- nav -->
+<nav class="nav" id="nav">
+  <a class="brand" href="#top">
+    <span class="dot"></span>
+    SHOHAG&nbsp;RANA
+  </a>
+  <div class="links">
+    <a href="#impact">Impact</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Stack</a>
+    <a href="#projects">Projects</a>
+    <a href="#education">Education</a>
+    <a class="cta" href="#contact">Get in touch</a>
+  </div>
+</nav>
+
+<!-- hero -->
+<header class="hero" id="top" data-screen-label="Hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <span class="status reveal"><span class="led"></span> Available for opportunities · Sydney, NSW</span>
+      <h1 class="reveal d1">Shohag<br><span class="accent">Rana</span></h1>
+      <p class="role reveal d2"><span class="prefix">$ whoami → </span><span class="typed" id="typed"></span><span class="caret"></span></p>
+      <p class="lede reveal d3">Cybersecurity &amp; DevSecOps engineer building secure, observable, self-healing cloud infrastructure. I ship CI/CD pipelines, harden systems, and cut cost without cutting uptime.</p>
+      <div class="actions reveal d4">
+        <a class="btn btn-primary" href="#contact">Start a conversation</a>
+        <a class="btn btn-ghost" href="#experience">View track record</a>
+      </div>
+      <div class="quicklinks reveal d4">
+        <a href="https://github.com/shohagrana64" target="_blank" rel="noopener">↗ github.com/shohagrana64</a>
+        <a href="https://www.linkedin.com/in/shohagrana64/" target="_blank" rel="noopener">↗ linkedin/shohagrana64</a>
+      </div>
+    </div>
+
+    <div class="terminal reveal d2" id="terminal">
+      <div class="bar">
+        <span class="tcdot r"></span><span class="tcdot y"></span><span class="tcdot g"></span>
+        <span class="title">shohag@prod — zsh — 80×24</span>
+      </div>
+      <div class="body" id="terminal-body"></div>
+    </div>
+  </div>
+</header>
+
+<!-- pipeline strip -->
+<section class="pipeline-strip" id="pipeline" data-screen-label="Pipeline">
+  <div class="wrap">
+    <div class="pipeline" id="pipelineEl">
+      <div class="pstage" data-stage="0">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3v12"/><circle cx="6" cy="18" r="3"/><circle cx="18" cy="6" r="3"/><path d="M18 9c0 6-12 3-12 6"/></svg></div>
+        <h4>Commit</h4><p>git push origin</p>
+      </div>
+      <div class="pconn" data-conn="0"><span class="fill"></span></div>
+      <div class="pstage" data-stage="1">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/><path d="M12 11v10"/></svg></div>
+        <h4>Build</h4><p>docker build</p>
+      </div>
+      <div class="pconn" data-conn="1"><span class="fill"></span></div>
+      <div class="pstage" data-stage="2">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 12l2 2 4-4"/><circle cx="12" cy="12" r="9"/></svg></div>
+        <h4>Test &amp; Scan</h4><p>trivy · sast</p>
+      </div>
+      <div class="pconn" data-conn="2"><span class="fill"></span></div>
+      <div class="pstage" data-stage="3">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2v6"/><path d="M5 9l7-4 7 4-7 4-7-4z"/><path d="M5 15l7 4 7-4"/></svg></div>
+        <h4>Deploy</h4><p>blue / green</p>
+      </div>
+      <div class="pconn" data-conn="3"><span class="fill"></span></div>
+      <div class="pstage" data-stage="4">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 12h4l3 8 4-16 3 8h4"/></svg></div>
+        <h4>Observe</h4><p>prometheus · ELK</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- impact / metrics -->
+<section class="sec-pad" id="impact" data-screen-label="Impact">
+  <div class="wrap">
+    <span class="eyebrow reveal">Measured impact</span>
+    <h2 class="sec-title reveal d1">Numbers from production.</h2>
+    <p class="sec-intro reveal d2" style="margin-bottom:48px;">Outcomes from real systems serving real traffic — cost, reliability, scale and recovery.</p>
+    <div class="metrics">
+      <div class="metric reveal" data-target="50" data-prefix="" data-suffix="%">
+        <div class="num"><span class="val">0</span><span class="u">%</span></div>
+        <div class="lbl">AWS cost reduction — ~$15K saved every month through rightsizing &amp; automation</div>
+      </div>
+      <div class="metric reveal d1" data-target="99.99" data-decimals="2" data-suffix="%">
+        <div class="num"><span class="val">0</span><span class="u">%</span></div>
+        <div class="lbl">Uptime sustained for mission-critical fintech systems</div>
+      </div>
+      <div class="metric reveal d2" data-target="50000" data-suffix="+" data-thousands="1">
+        <div class="num"><span class="val">0</span><span class="u">+</span></div>
+        <div class="lbl">Transactions per second handled behind Cloudflare WAF &amp; DDoS protection</div>
+      </div>
+      <div class="metric reveal d3" data-target="50" data-suffix="%">
+        <div class="num"><span class="val">0</span><span class="u">%</span></div>
+        <div class="lbl">Faster recovery — MTTR cut in half via root-cause analysis &amp; prevention</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- experience -->
+<section class="sec-pad" id="experience" data-screen-label="Experience" style="padding-top:0;">
+  <div class="wrap">
+    <span class="eyebrow reveal">Career log</span>
+    <h2 class="sec-title reveal d1">Where I've shipped.</h2>
+    <div class="timeline">
+
+      <div class="tnode reveal">
+        <span class="pin"></span>
+        <div class="card">
+          <div class="thead">
+            <div>
+              <h3>Infrastructure-Focused Full Stack Software Engineer</h3>
+              <span class="co">YouxPowered · Sydney</span>
+            </div>
+            <span class="when">Jul 2025 — Present</span>
+          </div>
+          <ul>
+            <li>Architected end-to-end CI/CD pipelines in Jenkins &amp; CodePipeline with blue-green deployment strategies across multiple environments.</li>
+            <li>Built infrastructure observability with Prometheus, Grafana and the ELK Stack — sharpening incident response and performance monitoring.</li>
+            <li>Stood up a self-hosted MongoDB cluster with Point-in-Time Recovery and automated backups for disaster recovery.</li>
+            <li>Managed core AWS (EC2, Beanstalk, Lambda, VPC, IAM, CloudFront, S3, LightSail, Security Groups) for scalability and compliance.</li>
+            <li>Deployed Rapid7 SIEM &amp; Incident Command for threat detection across endpoints and cloud assets.</li>
+            <li>Led incident response and post-mortems, driving root-cause fixes and preventive measures.</li>
+          </ul>
+          <div class="ach">
+            <span class="chip">↓ 50% AWS cost (~$15K/mo)</span>
+            <span class="chip">↑ 20% dev efficiency</span>
+            <span class="chip">ISO 27001 certified</span>
+            <span class="chip">↓ 50% MTTR</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tnode reveal">
+        <span class="pin"></span>
+        <div class="card">
+          <div class="thead">
+            <div>
+              <h3>Engineer — Platform &amp; Integration, Systems Engineering</h3>
+              <span class="co">bKash Ltd · Fintech · Bangladesh</span>
+            </div>
+            <span class="when">Oct 2021 — Feb 2023</span>
+          </div>
+          <ul>
+            <li>Managed 500+ RHEL/Ubuntu VMs, automating provisioning with Ansible and cutting setup time by 40%.</li>
+            <li>Built CI/CD pipelines with Jenkins and Tekton — 20% faster deployments, fewer manual errors.</li>
+            <li>Operated containerized workloads with Docker, Kubernetes, Helm and KEDA autoscaling across 50+ production services.</li>
+            <li>Centralized logging &amp; observability with Elastic Stack and Prometheus/Grafana, improving mean-time-to-detect by 35%.</li>
+            <li>Administered Cloudflare DNS, WAF and L7 DDoS protection — 500+ DNS entries, 50,000+ TPS.</li>
+          </ul>
+          <div class="ach">
+            <span class="chip">99.99% uptime</span>
+            <span class="chip">↓ 40% provisioning time</span>
+            <span class="chip">↓ 35% MTTD</span>
+            <span class="chip">50+ services</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="tnode reveal">
+        <span class="pin"></span>
+        <div class="card">
+          <div class="thead">
+            <div>
+              <h3>Academic Tutor — Cybersecurity &amp; Digital Forensics</h3>
+              <span class="co">University of Technology Sydney (UTS)</span>
+            </div>
+            <span class="when">Jan 2024 — Jul 2025</span>
+          </div>
+          <ul>
+            <li>Delivered instruction in Cryptography, Cybersecurity and Digital Forensics to undergraduate and postgraduate students.</li>
+            <li>Led weekly lab sessions, guiding hands-on exercises that reinforced theory with practical skill.</li>
+            <li>Evaluated assignments and projects with detailed, constructive feedback supporting academic growth.</li>
+          </ul>
+          <div class="ach">
+            <span class="chip">↑ 30% participation</span>
+            <span class="chip">Top satisfaction ratings</span>
+            <span class="chip">Course material revamp</span>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- skills -->
+<section class="sec-pad" id="skills" data-screen-label="Skills" style="padding-top:0;">
+  <div class="wrap">
+    <span class="eyebrow reveal">The stack</span>
+    <h2 class="sec-title reveal d1">Tools I reach for.</h2>
+    <p class="sec-intro reveal d2" style="margin-bottom:48px;">Cloud, security and automation — wired together with a security-first mindset.</p>
+    <div class="skills-grid">
+
+      <div class="skillcard reveal">
+        <div class="sh">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M17 18a4 4 0 000-8 6 6 0 00-11.3 1.5A3.5 3.5 0 006 18z"/></svg></span>
+          <h4>Cloud &amp; DevOps</h4>
+        </div>
+        <div class="tags">
+          <span class="tag">AWS EC2</span><span class="tag">Lambda</span><span class="tag">Beanstalk</span><span class="tag">VPC</span><span class="tag">IAM</span><span class="tag">CloudFront</span><span class="tag">Route 53</span><span class="tag">CodePipeline</span><span class="tag">Azure</span><span class="tag">Jenkins</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">ArgoCD</span>
+        </div>
+      </div>
+
+      <div class="skillcard reveal d1">
+        <div class="sh">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/><path d="M9 12l2 2 4-4"/></svg></span>
+          <h4>Security &amp; Monitoring</h4>
+        </div>
+        <div class="tags">
+          <span class="tag">Rapid7 SIEM</span><span class="tag">Prometheus</span><span class="tag">Grafana</span><span class="tag">ELK Stack</span><span class="tag">Cloudflare WAF</span><span class="tag">Linux Hardening</span><span class="tag">Secure CI/CD</span><span class="tag">Threat Analysis</span><span class="tag">DevSecOps</span>
+        </div>
+      </div>
+
+      <div class="skillcard reveal d2">
+        <div class="sh">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 7l9-4 9 4-9 4-9-4z"/><path d="M3 7v10l9 4 9-4V7"/></svg></span>
+          <h4>Infrastructure as Code</h4>
+        </div>
+        <div class="tags">
+          <span class="tag">Terraform</span><span class="tag">Ansible</span><span class="tag">Tekton</span><span class="tag">KEDA</span><span class="tag">Git</span><span class="tag">Bash</span><span class="tag">CI/CD automation</span>
+        </div>
+      </div>
+
+      <div class="skillcard reveal d3">
+        <div class="sh">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 9l-3 3 3 3"/><path d="M16 9l3 3-3 3"/><path d="M13 6l-2 12"/></svg></span>
+          <h4>Languages &amp; AI Tooling</h4>
+        </div>
+        <div class="tags">
+          <span class="tag">Python</span><span class="tag">GoLang</span><span class="tag">Java</span><span class="tag">C++</span><span class="tag">JavaScript</span><span class="tag">PHP</span><span class="tag">Cisco CCNA</span><span class="tag">Cursor</span><span class="tag">Claude Code</span><span class="tag">Kiro</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- projects -->
+<section class="sec-pad" id="projects" data-screen-label="Projects" style="padding-top:0;">
+  <div class="wrap">
+    <span class="eyebrow reveal">Selected work</span>
+    <h2 class="sec-title reveal d1">Things I've built.</h2>
+    <div class="proj-grid" style="margin-top:48px;">
+
+      <div class="proj reveal">
+        <div class="pn">// 01 — gov fintech</div>
+        <h3>National payment gateway CI/CD</h3>
+        <p>Designed and ran the CI/CD pipeline for a government project delivering a central payment gateway between banks — secure, auditable releases across a regulated environment.</p>
+        <div class="pt"><span class="tag">Jenkins</span><span class="tag">Blue-Green</span><span class="tag">Secure CI/CD</span></div>
+      </div>
+
+      <div class="proj reveal d1">
+        <div class="pn">// 02 — serverless at scale</div>
+        <h3>200+ Lambda fleet across 5 environments</h3>
+        <p>Deployed and maintained 200+ AWS Lambdas spanning dev, SIT, UAT, demo and production — including Twilio SMS, an API emailer, an AI chatbot, Equifax and Zignsec integrations.</p>
+        <div class="pt"><span class="tag">AWS Lambda</span><span class="tag">Integrations</span><span class="tag">Multi-env</span></div>
+      </div>
+
+      <div class="proj reveal d2">
+        <div class="pn">// 03 — resilience</div>
+        <h3>Self-hosted MongoDB with PITR</h3>
+        <p>Built and maintained a self-hosted MongoDB cluster with Point-in-Time Recovery and automated backups — a disaster-recovery posture that survives the bad days.</p>
+        <div class="pt"><span class="tag">MongoDB</span><span class="tag">PITR</span><span class="tag">Backup automation</span></div>
+      </div>
+
+      <div class="proj reveal d3">
+        <div class="pn">// 04 — platform</div>
+        <h3>Containerized platform, 50+ services</h3>
+        <p>Operated 50+ production services on Docker &amp; Kubernetes with Helm and KEDA autoscaling, backed by centralized observability — sustaining 99.99% uptime.</p>
+        <div class="pt"><span class="tag">Kubernetes</span><span class="tag">Helm</span><span class="tag">KEDA</span></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- education -->
+<section class="sec-pad" id="education" data-screen-label="Education" style="padding-top:0;">
+  <div class="wrap">
+    <span class="eyebrow reveal">Foundations</span>
+    <h2 class="sec-title reveal d1">Education &amp; honors.</h2>
+    <div class="edu-grid" style="margin-top:48px;">
+      <div class="edu-card reveal">
+        <h3>Master of Information Technology</h3>
+        <span class="co">University of Technology Sydney (UTS)</span>
+        <div class="when">Feb 2023 — Feb 2025</div>
+        <div class="wam"><span class="v">90.50</span><span class="l">WAM · Weighted Average Mark</span></div>
+      </div>
+      <div class="awards">
+        <div class="award reveal d1">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><circle cx="12" cy="8" r="5"/><path d="M8.5 12.5L7 22l5-3 5 3-1.5-9.5"/></svg></span>
+          <p>1st place — UTS Techfest 2023<span>AI Hackathon · Google Cloud Marathon</span></p>
+        </div>
+        <div class="award reveal d2">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/></svg></span>
+          <p>UTS SecOps Bootcamp<span>Completed with ThreatDefence</span></p>
+        </div>
+        <div class="award reveal d3">
+          <span class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2l2.4 7.4H22l-6 4.5 2.3 7.1L12 16.8 5.7 21l2.3-7.1-6-4.5h7.6z"/></svg></span>
+          <p>VC's Scholarship &amp; Dean's List 2024<span>University of Technology Sydney</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- contact -->
+<section class="sec-pad contact" id="contact" data-screen-label="Contact">
+  <div class="wrap">
+    <span class="eyebrow reveal" style="justify-content:center;">Let's connect</span>
+    <h2 class="sec-title reveal d1">Building something that needs to stay up?</h2>
+    <p class="lede reveal d2">I'm open to DevOps, DevSecOps, Cloud and SRE roles. Let's talk reliability, security and scale.</p>
+    <div class="contact-cards">
+      <a class="ccard reveal" href="mailto:shohagrana64@gmail.com">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></div>
+        <div class="k">Email</div>
+        <div class="v">shohagrana64@gmail.com</div>
+      </a>
+      <a class="ccard reveal d1" href="tel:+61403286661">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M5 4h4l2 5-3 2a12 12 0 005 5l2-3 5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></div>
+        <div class="k">Phone</div>
+        <div class="v">0403 286 661</div>
+      </a>
+      <a class="ccard reveal d2" href="https://www.linkedin.com/in/shohagrana64/" target="_blank" rel="noopener">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 10v7M7 7v.01M12 17v-4a2 2 0 014 0v4M12 17v-7"/></svg></div>
+        <div class="k">LinkedIn</div>
+        <div class="v">in/shohagrana64</div>
+      </a>
+      <a class="ccard reveal d3" href="https://github.com/shohagrana64" target="_blank" rel="noopener">
+        <div class="ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M9 19c-4 1.5-4-2.5-6-3m12 5v-3.5c0-1 .1-1.4-.5-2 2.8-.3 5.5-1.4 5.5-6a4.6 4.6 0 00-1.3-3.2 4.3 4.3 0 00-.1-3.2s-1-.3-3.4 1.3a11.5 11.5 0 00-6 0C7.3 3.1 6.3 3.4 6.3 3.4a4.3 4.3 0 00-.1 3.2A4.6 4.6 0 005 9.8c0 4.6 2.7 5.7 5.5 6-.6.6-.6 1.2-.5 2V21"/></svg></div>
+        <div class="k">GitHub</div>
+        <div class="v">shohagrana64</div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="wrap">
+    <span class="brand"><span style="width:9px;height:9px;border-radius:50%;background:var(--primary);display:inline-block;"></span> Shohag Rana</span>
+    <span class="meta">DevSecOps · Cloud · Sydney, NSW — Full working rights, no restrictions</span>
+  </div>
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>

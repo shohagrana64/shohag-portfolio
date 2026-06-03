@@ -120,6 +120,9 @@ section { position:relative; z-index:1; }
 .nav.scrolled { background:rgba(10,7,12,0.72); backdrop-filter:blur(14px); border-bottom-color:var(--line); padding:12px 28px; }
 .nav .brand { display:flex; align-items:center; gap:11px; font-family:var(--font-sans); font-weight:800; color:var(--fg-1); font-size:16px; letter-spacing:-0.01em; }
 .nav .brand .dot { width:11px; height:11px; border-radius:50%; background:var(--primary); box-shadow:0 0 0 4px rgba(43,229,194,0.18); animation:livepulse 2.4s var(--ease) infinite; }
+.nav .brand .brand-logo { width:30px; height:30px; object-fit:contain; filter:drop-shadow(0 0 7px rgba(43,229,194,0.28)); transition:transform .2s var(--ease); }
+.nav .brand:hover .brand-logo { transform:scale(1.06); }
+.footer .brand .brand-logo { width:24px; height:24px; object-fit:contain; }
 .nav .links { display:flex; gap:6px; align-items:center; }
 .nav .links a { font-family:var(--font-sans); font-weight:600; font-size:14px; color:var(--fg-2); padding:8px 14px; border-radius:9999px; transition:color .2s, background .2s; }
 .nav .links a:hover { color:var(--fg-1); background:rgba(255,255,255,0.04); }

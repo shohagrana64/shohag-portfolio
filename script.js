@@ -241,4 +241,131 @@
       if (s) spyIO.observe(s);
     });
   }
+
+  /* ====================================================================
+     Premium motion layer
+     ==================================================================== */
+  var finePointer = window.matchMedia('(pointer: fine)').matches;
+
+  /* ---------- scroll progress beam ---------- */
+  (function () {
+    if (reduce) return;
+    var bar = document.createElement('div');
+    bar.className = 'scroll-progress';
+    document.body.appendChild(bar);
+    var ticking = false;
+    function update() {
+      var h = document.documentElement;
+      var max = h.scrollHeight - h.clientHeight;
+      var p = max > 0 ? window.scrollY / max : 0;
+      bar.style.transform = 'scaleX(' + p.toFixed(4) + ')';
+      ticking = false;
+    }
+    window.addEventListener('scroll', function () {
+      if (!ticking) { ticking = true; requestAnimationFrame(update); }
+    }, { passive: true });
+    update();
+  })();
+
+  /* ---------- cursor spotlight over the background grid ---------- */
+  (function () {
+    if (reduce || !finePointer) return;
+    var bgfx = document.querySelector('.bg-fx');
+    if (!bgfx) return;
+    var spot = document.createElement('div'); spot.className = 'spot';
+    var gridHi = document.createElement('div'); gridHi.className = 'grid-hi';
+    bgfx.appendChild(gridHi);
+    bgfx.appendChild(spot);
+    document.body.classList.add('pointer-fine');
+    var rafId = null, mx = 0, my = 0;
+    function apply() {
+      document.body.style.setProperty('--mx', mx + 'px');
+      document.body.style.setProperty('--my', my + 'px');
+      rafId = null;
+    }
+    window.addEventListener('pointermove', function (e) {
+      if (e.pointerType && e.pointerType !== 'mouse') return;
+      mx = e.clientX; my = e.clientY;
+      if (!rafId) rafId = requestAnimationFrame(apply);
+    }, { passive: true });
+  })();
+
+  /* ---------- hero name: split into animated letters ---------- */
+  (function () {
+    if (reduce) return;
+    var h1 = document.querySelector('.hero h1');
+    if (!h1) return;
+    var delay = 0;
+    Array.prototype.forEach.call(h1.childNodes, function (node) {
+      if (node.nodeType === 3) {            // text node -> wrap each char
+        var frag = document.createDocumentFragment();
+        node.textContent.split('').forEach(function (chr) {
+          if (chr === ' ') { frag.appendChild(document.createTextNode(' ')); return; }
+          var s = document.createElement('span');
+          s.className = 'ch'; s.textContent = chr;
+          s.style.animationDelay = (delay += 0.05).toFixed(2) + 's';
+          frag.appendChild(s);
+        });
+        h1.replaceChild(frag, node);
+      } else if (node.nodeType === 1 && node.tagName !== 'BR') {
+        // element (e.g. .accent) -> animate as one unit to preserve its gradient clip
+        node.classList.add('ch');
+        node.style.animationDelay = (delay += 0.08).toFixed(2) + 's';
+      }
+    });
+  })();
+
+  /* ---------- 3D tilt + glare on cards ---------- */
+  (function () {
+    if (reduce || !finePointer) return;
+    var sel = '.terminal, .metric, .tnode .card, .skillcard, .proj, .edu-card, .ccard';
+    var MAX = 7; // deg
+    document.querySelectorAll(sel).forEach(function (card) {
+      card.classList.add('tilt');
+      var glare = document.createElement('span'); glare.className = 'glare';
+      card.appendChild(glare);
+      var raf = null, rx = 0, ry = 0, gx = 50, gy = 50, rect = null;
+      function paint() {
+        card.style.transform = 'perspective(900px) rotateX(' + rx + 'deg) rotateY(' + ry + 'deg)';
+        card.style.setProperty('--gx', gx + '%');
+        card.style.setProperty('--gy', gy + '%');
+        raf = null;
+      }
+      card.addEventListener('pointerenter', function () { rect = card.getBoundingClientRect(); card.classList.add('tilting'); });
+      card.addEventListener('pointermove', function (e) {
+        if (!rect) rect = card.getBoundingClientRect();
+        var px = (e.clientX - rect.left) / rect.width;
+        var py = (e.clientY - rect.top) / rect.height;
+        ry = (px - 0.5) * MAX * 2;
+        rx = (0.5 - py) * MAX * 2;
+        gx = px * 100; gy = py * 100;
+        if (!raf) raf = requestAnimationFrame(paint);
+      }, { passive: true });
+      card.addEventListener('pointerleave', function () {
+        card.classList.remove('tilting');
+        card.style.transform = '';
+        rect = null;
+      });
+    });
+  })();
+
+  /* ---------- magnetic CTAs ---------- */
+  (function () {
+    if (reduce || !finePointer) return;
+    var STRENGTH = 0.35, RADIUS = 90;
+    document.querySelectorAll('.btn-primary, .nav .links a.cta').forEach(function (btn) {
+      btn.classList.add('magnetic');
+      var raf = null, tx = 0, ty = 0;
+      function paint() { btn.style.transform = 'translate(' + tx + 'px,' + ty + 'px)'; raf = null; }
+      btn.addEventListener('pointermove', function (e) {
+        var r = btn.getBoundingClientRect();
+        var cx = r.left + r.width / 2, cy = r.top + r.height / 2;
+        var dx = e.clientX - cx, dy = e.clientY - cy;
+        if (Math.hypot(dx, dy) > RADIUS + Math.max(r.width, r.height) / 2) return;
+        tx = dx * STRENGTH; ty = dy * STRENGTH;
+        if (!raf) raf = requestAnimationFrame(paint);
+      }, { passive: true });
+      btn.addEventListener('pointerleave', function () { tx = ty = 0; btn.style.transform = ''; });
+    });
+  })();
 })();

@@ -262,7 +262,8 @@ section { position:relative; z-index:1; }
 .edu-card h3 { font-family:var(--font-sans); font-weight:800; color:var(--fg-1); font-size:22px; margin-bottom:6px; letter-spacing:-0.01em; }
 .edu-card .co { color:var(--primary); font-weight:600; font-size:15px; }
 .edu-card .when { font-family:var(--font-mono); font-size:12.5px; color:var(--fg-3); margin-top:4px; }
-.edu-card .wam { margin-top:18px; display:inline-flex; align-items:baseline; gap:8px; }
+.edu-card .grades { margin-top:18px; display:flex; flex-wrap:wrap; gap:28px; }
+.edu-card .wam { display:inline-flex; align-items:baseline; gap:8px; }
 .edu-card .wam .v { font-family:var(--font-display); font-weight:800; font-size:40px; color:var(--fg-1); }
 .edu-card .wam .l { font-family:var(--font-mono); font-size:12px; color:var(--fg-3); }
 .awards { display:grid; gap:12px; }
@@ -294,6 +295,88 @@ section { position:relative; z-index:1; }
 .reveal.in { opacity:1; transform:none; }
 .reveal.d1 { transition-delay:.08s; } .reveal.d2 { transition-delay:.16s; } .reveal.d3 { transition-delay:.24s; } .reveal.d4 { transition-delay:.32s; }
 @media (prefers-reduced-motion:reduce){ .reveal{ opacity:1; transform:none; } * { animation:none !important; scroll-behavior:auto; } }
+
+/* ==========================================================================
+   Premium motion layer — cursor spotlight, scroll beam, 3D tilt, magnetic
+   CTAs, hero letter reveal, card sheen. All GPU-friendly (transform/opacity)
+   and fully disabled under prefers-reduced-motion.
+   ========================================================================== */
+
+/* scroll progress beam */
+.scroll-progress {
+  position:fixed; top:0; left:0; right:0; height:2px; z-index:60;
+  transform:scaleX(0); transform-origin:0 50%;
+  background:linear-gradient(90deg,var(--primary),var(--info),var(--pink-300));
+  box-shadow:0 0 14px rgba(43,229,194,0.6);
+}
+
+/* cursor spotlight — soft glow + grid that lights under the pointer */
+.bg-fx .spot {
+  position:absolute; width:680px; height:680px;
+  left:var(--mx,50%); top:var(--my,28%); transform:translate(-50%,-50%);
+  background:radial-gradient(circle, rgba(43,229,194,0.12), transparent 62%);
+  opacity:0; transition:opacity .45s var(--ease); will-change:transform;
+}
+.bg-fx .grid-hi {
+  position:absolute; inset:-2px;
+  background-image:
+    linear-gradient(rgba(43,229,194,0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(43,229,194,0.16) 1px, transparent 1px);
+  background-size:64px 64px;
+  -webkit-mask-image:radial-gradient(circle 200px at var(--mx,-300px) var(--my,-300px), #000 0%, transparent 70%);
+          mask-image:radial-gradient(circle 200px at var(--mx,-300px) var(--my,-300px), #000 0%, transparent 70%);
+  opacity:0; transition:opacity .35s var(--ease);
+}
+body.pointer-fine .bg-fx .spot,
+body.pointer-fine .bg-fx .grid-hi { opacity:1; }
+
+/* 3D tilt + glare */
+.tilt { position:relative; transform-style:preserve-3d; will-change:transform; }
+.tilt > .glare {
+  position:absolute; inset:0; border-radius:inherit; pointer-events:none; z-index:2;
+  background:radial-gradient(circle at var(--gx,50%) var(--gy,50%), rgba(255,255,255,0.14), transparent 46%);
+  opacity:0; transition:opacity .3s var(--ease); mix-blend-mode:overlay;
+}
+.tilt.tilting > .glare { opacity:1; }
+
+/* magnetic CTA */
+.magnetic { will-change:transform; }
+
+/* hero name — per-letter reveal + animated gradient shimmer on accent */
+.hero h1 .ch {
+  display:inline-block; opacity:0; transform:translateY(46px) rotate(8deg);
+  animation:charIn .8s var(--ease) forwards;
+}
+@keyframes charIn { to { opacity:1; transform:none; } }
+.hero h1 .accent {
+  background:linear-gradient(100deg,var(--pink-300) 10%,var(--info) 50%,var(--pink-400) 90%);
+  background-size:220% auto; -webkit-background-clip:text; background-clip:text;
+  -webkit-text-fill-color:transparent; color:transparent;
+  animation:shimmer 6.5s linear infinite;
+}
+@keyframes shimmer { to { background-position:220% center; } }
+
+/* light-sweep sheen across cards on hover */
+.proj, .skillcard, .ccard, .metric { /* ensure clipping for the sweep */ }
+.proj::after, .skillcard::after, .ccard::after, .metric::after {
+  content:''; position:absolute; top:0; left:-75%; width:45%; height:100%;
+  background:linear-gradient(120deg, transparent, rgba(255,255,255,0.07), transparent);
+  transform:skewX(-20deg); pointer-events:none; transition:left .7s var(--ease); z-index:1;
+}
+.skillcard, .ccard, .edu-card { position:relative; overflow:hidden; }
+.proj:hover::after, .skillcard:hover::after, .ccard:hover::after, .metric:hover::after { left:160%; }
+
+/* reveal — add a subtle blur-in for extra refinement */
+.reveal { filter:blur(7px); transition:opacity .7s var(--ease), transform .7s var(--ease), filter .7s var(--ease); }
+.reveal.in { filter:none; }
+
+@media (prefers-reduced-motion:reduce){
+  .scroll-progress, .bg-fx .spot, .bg-fx .grid-hi, .tilt > .glare { display:none; }
+  .hero h1 .ch { opacity:1; transform:none; animation:none; }
+  .hero h1 .accent { animation:none; }
+  .proj::after, .skillcard::after, .ccard::after, .metric::after { display:none; }
+  .reveal { filter:none; }
+}
 
 /* -------------------- Responsive -------------------- */
 @media (max-width:980px){
